@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Your Personal Fitness Journey</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">FitLife</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#bmi-calculator">BMI Calculator</a>
+            <a href="#workouts">Workouts</a>
+            <a href="#nutrition">Nutrition</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Life with FitLife</h1>
+            <p>Your journey to a healthier lifestyle starts here</p>
+            <a href="#bmi-calculator" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- BMI Calculator Section -->
+    <section id="bmi-calculator" class="bmi-section">
+        <h2>BMI Calculator</h2>
+        <div class="calculator-container">
+            <div class="input-group">
+                <label for="height"></label>
+                <input type="number" id="height" placeholder="Enter height in cm" min="0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="weight"></label>
+                <input type="number" id="weight" placeholder="Enter weight in kg" min="0" step="0.1">
+            </div>
+            <button id="calculate-bmi" class="calculate-btn">Calculate BMI</button>
+            <div id="bmi-result"></div>
+        </div>
+    </section>
+
+    <button id="show-exercises" class="show-exercises-btn">
+        <i class="fas fa-dumbbell"></i>
+        View Exercise Library
+    </button>
+
+    <div class="exercise-showcase" style="display: none;">
+        <h4><i class="fas fa-dumbbell"></i> Exercise Library</h4>
+        <div class="difficulty-tabs">
+            <button class="tab-btn active" data-level="beginner">Beginner</button>
+            <button class="tab-btn" data-level="intermediate">Intermediate</button>
+            <button class="tab-btn" data-level="advanced">Advanced</button>
+        </div>
+        <div class="exercise-cards"></div>
+    </div>
+
+    <!-- Workout Routines Section -->
+    <section id="workouts" class="workouts-section">
+        <h2>Workout Routines</h2>
+        <div class="workout-cards">
+            <div class="workout-card weight-loss">
+                <i class="fas fa-fire-alt"></i>
+                <h3>Weight Loss</h3>
+                <p>Customized high-intensity workouts designed for maximum fat burning and improved metabolism.</p>
+                <a href="#" class="workout-btn">Start Program</a>
+            </div>
+            <div class="workout-card muscle-gain">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Muscle Gain</h3>
+                <p>Progressive strength training programs with expert guidance for building lean muscle mass.</p>
+                <a href="#" class="workout-btn">Start Program</a>
+            </div>
+            <div class="workout-card maintenance">
+                <i class="fas fa-heart"></i>
+                <h3>Maintenance</h3>
+                <p>Balanced workout routines combining cardio and strength training for overall fitness.</p>
+                <a href="#" class="workout-btn">Start Program</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section id="nutrition" class="nutrition-section">
+        <h2>Nutrition Plans</h2>
+        <div class="nutrition-container">
+            <div class="daily-tips">
+                <h3>Daily Fitness Tips</h3>
+                <div class="tips-carousel">
+                    <!-- Tips will be dynamically added here -->
+                </div>
+                <div class="nutrition-tips">
+                    <h4>Quick Nutrition Facts</h4>
+                    <ul id="nutrition-facts">
+                        <li>Protein helps build and repair muscles</li>
+                        <li>Complex carbs provide sustained energy</li>
+                        <li>Healthy fats support brain function</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="calorie-tracker">
+                <h3>Calorie Tracker</h3>
+                <div class="meal-tracking">
+                    <div class="meal-selector">
+                        <select id="meal-type">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snacks">Snacks</option>
+                        </select>
+                        <button id="show-quick-add" class="quick-add-btn">
+                            <i class="fas fa-utensils"></i> Quick Add
+                        </button>
+                    </div>
+                    <div class="food-input">
+                        <input type="text" id="food-item" placeholder="Enter food item">
+                        <input type="number" id="calorie-amount" placeholder="Calories">
+                        <button id="add-food" class="add-food-btn">Add Food</button>
+                    </div>
+                </div>
+
+                <div class="meals-summary">
+                    <div class="meal-category" id="breakfast-items">
+                        <h4><i class="fas fa-sun"></i> Breakfast</h4>
+                        <div class="food-list"></div>
+                        <div class="meal-total">Total: <span>0</span> cal</div>
+                    </div>
+                    <div class="meal-category" id="lunch-items">
+                        <h4><i class="fas fa-cloud-sun"></i> Lunch</h4>
+                        <div class="food-list"></div>
+                        <div class="meal-total">Total: <span>0</span> cal</div>
+                    </div>
+                    <div class="meal-category" id="dinner-items">
+                        <h4><i class="fas fa-moon"></i> Dinner</h4>
+                        <div class="food-list"></div>
+                        <div class="meal-total">Total: <span>0</span> cal</div>
+                    </div>
+                    <div class="meal-category" id="snacks-items">
+                        <h4><i class="fas fa-cookie"></i> Snacks</h4>
+                        <div class="food-list"></div>
+                        <div class="meal-total">Total: <span>0</span> cal</div>
+                    </div>
+                </div>
+
+                <div class="daily-summary" id="daily-summary">
+                    <h4>Daily Summary</h4>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span class="label">Breakfast</span>
+                            <span class="value" id="breakfast-total">0 cal</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Lunch</span>
+                            <span class="value" id="lunch-total">0 cal</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Dinner</span>
+                            <span class="value" id="dinner-total">0 cal</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Snacks</span>
+                            <span class="value" id="snacks-total">0 cal</span>
+                        </div>
+                    </div>
+                    <div class="total-calories">
+                        <p>Total Calories: <span id="total-calories">0</span></p>
+                        <p>Daily Goal: 2000 calories</p>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="calorie-progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <h2>Success Stories</h2>
+        <div class="testimonials-container">
+            <!-- Testimonials will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Let's Connect</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>123 Fitness Street, Wellness City</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>info@fitlife.com</p>
+                </div>
+            </div>
+            <form id="contact-form" class="modern-form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fas fa-pen"></i>
+                        <textarea id="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button id="chat-toggle" class="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <h3>Virtual Nutritionist</h3>
+                <button class="close-chat">×</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask me anything...">
+                <button id="send-message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FitLife</h4>
+                <p>Your journey to a healthier lifestyle</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#bmi-calculator">BMI Calculator</a>
+                <a href="#workouts">Workouts</a>
+                <a href="#nutrition">Nutrition</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FitLife. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html> 
